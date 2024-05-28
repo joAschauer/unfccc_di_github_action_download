@@ -7,7 +7,7 @@ from unfccc_di_api import UNFCCCApiReader
 OUTDIR = Path(__file__).parent / "downloaded_data"
 OUTDIR.mkdir()
 
-TS = datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%d")
+TS = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
 
 
 def main():
