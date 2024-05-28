@@ -1,6 +1,7 @@
 import datetime
 from pathlib import Path
 
+import pandas as pd
 import tqdm
 from unfccc_di_api import UNFCCCApiReader
 
@@ -16,10 +17,11 @@ def main():
     r = UNFCCCApiReader()
     data = []
     for party in tqdm.tqdm(r.parties["code"], desc="parties"):
-        df = r.query(party_code=party, progress=True)
-        df["download_date"] = TS
+        df = r.query(party_code=party, progress=False)
         data.append(df)
 
+    data = pd.concat(data)
+    data["download_date"] = TS
     # encode non numerical year values:
     data.loc[data["year"] == "Base year", "year"] = 9999
     # save in csv and parquet format
