@@ -1,8 +1,6 @@
 name: download
 
 on:
-  schedule:
-    - cron: 24 8 1 * *
   workflow_dispatch:
 
 jobs:
