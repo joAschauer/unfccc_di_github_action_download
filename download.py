@@ -1,4 +1,3 @@
-import datetime
 import os
 from pathlib import Path
 
@@ -10,7 +9,6 @@ OUTDIR = Path(__file__).parent / "downloaded_data"
 OUTDIR.mkdir()
 
 TS = os.environ["DOWNLOAD_DATE"]
-print(datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d"))
 
 def main():
     print(TS)
