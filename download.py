@@ -24,6 +24,7 @@ def main():
     data["download_date"] = TS
     # encode non numerical year values:
     data.loc[data["year"] == "Base year", "year"] = 9999
+    data["year"] = data["year"].astype(int)
     # save in csv and parquet format
     data.to_csv(OUTDIR / f"{TS}_all_parties.csv.gz", compression="gzip")
     data.to_parquet(OUTDIR / f"{TS}_all_parties.parquet", compression="brotli")
