@@ -25,8 +25,8 @@ def main():
     # encode non numerical year values:
     data.loc[data["year"] == "Base year", "year"] = 9999
     # save in csv and parquet format
-    df.to_csv(OUTDIR / f"{TS}_data.csv.gz", compression="gzip")
-    df.to_parquet(OUTDIR / f"{TS}_data.parquet", compression="brotli")
+    data.to_csv(OUTDIR / f"{TS}_all_parties.csv.gz", compression="gzip")
+    data.to_parquet(OUTDIR / f"{TS}_all_parties.parquet", compression="brotli")
 
 
 if __name__ == "__main__":
