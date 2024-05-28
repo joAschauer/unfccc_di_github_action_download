@@ -5,10 +5,12 @@ on:
 
 jobs:
   download:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: set download date
+        run: echo "DOWNLOAD_DATE=$(date +"%Y-%m-%d")" >> $GITHUB_ENV
       - name: setup Python 
         uses: actions/setup-python@v5
         with:
@@ -20,5 +22,5 @@ jobs:
       - name: Archive script output as job artifact
         uses: actions/upload-artifact@v4
         with:
-          name: downloaded-data
+          name: ${{ env.DOWNLOAD_DATE }}-downloaded-data
           path: downloaded_data/*

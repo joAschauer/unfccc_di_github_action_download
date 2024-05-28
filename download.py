@@ -1,4 +1,5 @@
 import datetime
+import os
 from pathlib import Path
 
 import pandas as pd
@@ -8,8 +9,8 @@ from unfccc_di_api import UNFCCCApiReader
 OUTDIR = Path(__file__).parent / "downloaded_data"
 OUTDIR.mkdir()
 
-TS = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
-
+TS = os.environ["DOWNLOAD_DATE"]
+print(datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d"))
 
 def main():
     print(TS)
